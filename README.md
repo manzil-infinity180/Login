@@ -1,4 +1,8 @@
 # Login
+
+[![GitHub issues](https://img.shields.io/github/issues/manzil-infinity180/Login)](https://github.com/manzil-infinity180/Login/issues)
+[![GitHub stars](https://img.shields.io/github/stars/manzil-infinity180/Login)](https://github.com/manzil-infinity180/Login/stargazers)
+
 <h3>Language/Tools/Other</h3> 
 
 - HTML/CSS/JS
