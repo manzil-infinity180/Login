@@ -22,5 +22,5 @@
 - Preview ( I am working on that , will update this repo soon)
 
 
-https://github.com/manzil-infinity180/Login/assets/119070053/34605647-56fa-44dc-a7c1-fea39049c90a
+
 
