@@ -1,12 +1,14 @@
 const mongoose = require("mongoose");
+const validator = require('validator');
 
 const userSchema =new mongoose.Schema({
   email:{
     type:String,
-    trim:true,
-    lowercase:true,
     required:[true,'User cannot without emailId'],
-    match:[/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
+    unique:[true,'User Already exist with this email'],
+    lowercase:true,
+    validate : [validator.isEmail,'Please Provide Valid Email'],
+    match: [/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 'Please enter a valid email'],
   },
   password:{
     type:String,
