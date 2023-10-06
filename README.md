@@ -23,6 +23,6 @@
 
   [Video Link](https://x.com/manzil_rahul/status/1708930631479198059?s=20)
 
-
+Note : /resetPassword route is not working 
 
 
