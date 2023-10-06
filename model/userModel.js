@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require('validator');
+const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
 
 const userSchema =new mongoose.Schema({
   email:{
@@ -23,8 +25,28 @@ const userSchema =new mongoose.Schema({
       },
       message:"Confirm Password must be same as Password"
     }
-  }
+  },
+  resetPasswordToken : String
 });
+
+userSchema.pre('save',async function(next){
+  if(!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password,10);
+  this.confirmPassword = undefined;
+  next();
+});
+// Instance function 
+userSchema.methods.correctPassword = async function(plainPassword , hashedPasswod){
+  return (await bcrypt.compare(plainPassword,hashedPasswod));
+}
+
+userSchema.methods.createPasswordResetToken = function(){
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  this.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+  console.log("resetToken - resetPasswordToken "+resetToken,this.resetPasswordToken);
+  return resetToken;  
+}
+
 
 const User = mongoose.model('User',userSchema);
 module.exports=User;

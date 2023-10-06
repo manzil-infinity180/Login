@@ -15,8 +15,6 @@ const login = async (email,password ) =>{
     alert("Logged In Successfully");
     window.setTimeout(()=>{
       location.assign('/');
-      
-
     },2000);
   }
   
@@ -41,8 +39,3 @@ document.querySelector('.form').addEventListener('submit',(e)=>{
   const password = document.getElementById('password').value;
    login(email,password); 
 })
-
-
-// document.querySelector('.form').addEventListener('click',()=>{
-//   console.log("fuck u #");
-// })

@@ -7,13 +7,13 @@ block content
       form.form.form--login
         .form__group
           label.form__label(for='email') Name 
-          input#email.form__input(type='email', placeholder='Rahul Vishwakarma', required)
+          input#name.form__input(type='text', placeholder='Rahul Vishwakarma', required)
         .form__group
           label.form__label(for='email') Job/Position
-          input#email.form__input(type='email', placeholder='Student/Professional/Web Developer', required)
+          input#job.form__input(type='text', placeholder='Student/Professional/Web Developer', required)
         .form__group
           label.form__label(for='email') Language/Tools/Technology 
-          input#email.form__input(type='email', placeholder='C/C++ Javascript NodeJs', required)          
+          input#language.form__input(type='text', placeholder='C/C++ Javascript NodeJs', required)          
         .form__group
           label.form__label(for='email') Email Address
           input#email.form__input(type='email', placeholder='you@example.com', required)
@@ -26,3 +26,4 @@ block content
         
         .form__group
           button.btn.btn--green Register
+  script(src='/js/register.js')

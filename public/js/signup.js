@@ -17,6 +17,7 @@ const signup = async(email,password,confirmPassword)=>{
         location.assign('/');
       },1500);
     }
+    
 
   }catch(err){
     console.log(err.response.data);
