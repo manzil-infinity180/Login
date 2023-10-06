@@ -1,13 +1,13 @@
 const User = require("../model/userModel");
 
+exports.getOverView = (req,res)=>{
+  res.status(200).render('base',{
+    title: 'Overview'
+  })
+}
 exports.getLoginForm = (req,res)=>{
   res.status(200).render('login',{
     title:'LogIn'
-  })
-}
-exports.getOverView = (req,res)=>{
-  res.status(200).render('base',{
-    title: 'Login'
   })
 }
 exports.createAccount = (req,res)=>{
