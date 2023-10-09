@@ -1,6 +1,6 @@
 # Login
 <h1> I will refractor and will create frontend later (Current frontend is too simple )</h1>
-<h3> Currently nothing is working </h3>
+- Install it locally (take a help of package.json)
 
 [![GitHub issues](https://img.shields.io/github/issues/manzil-infinity180/Login)](https://github.com/manzil-infinity180/Login/issues)
 [![GitHub stars](https://img.shields.io/github/stars/manzil-infinity180/Login)](https://github.com/manzil-infinity180/Login/stargazers)
@@ -23,6 +23,6 @@
 
   [Video Link](https://x.com/manzil_rahul/status/1708930631479198059?s=20)
 
-Note : /resetPassword route is not working 
+
 
 
