@@ -26,6 +26,7 @@ const userSchema =new mongoose.Schema({
       message:"Confirm Password must be same as Password"
     }
   },
+  photo : String,
   resetPasswordToken : String
 });
 

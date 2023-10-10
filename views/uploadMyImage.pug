@@ -1,0 +1,18 @@
+extends base 
+
+block content 
+  main.main
+    .login-form
+      h2.heading-secondary.ma-bt-lg Update Your Password
+      form.form.form--login
+        .form__group
+        .form__group.ma-bt-md
+          label.form__label(for='email') Enter Your Email
+          input#confirmPassword.form__input(type='email', placeholder='you@gmail.com', required, minlength='8')
+
+          label.form__label(for='file') Upload
+          input#password.form__input(type='file', placeholder='Upload Your Image', required, minlength='8')
+        .form__group.ma-bt-md
+        
+        .form__group
+          button.btn.btn--green  Update Image 
