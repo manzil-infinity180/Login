@@ -30,3 +30,16 @@ exports.registration = (req,res)=>{
     title : 'Fresh Account' 
   })
 }
+exports.resetPasswod = (req,res)=>{
+  const resetToken = req.param.resetToken;
+  res.status(200).render('resetPassword',{
+    title : 'Reset Your Password',
+    resetToken
+
+  })
+}
+exports.updateMe = (req,res)=>{
+  res.status(200).render('uploadMyImage',{
+    title: 'Update My Image'
+  })
+}

@@ -1,5 +1,6 @@
 // const mongoose = require("mongoose");
 const { reset } = require("nodemon");
+const multer = require("multer");
 const User = require("./../model/userModel");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/email");
@@ -20,6 +21,44 @@ const createSendToken = (user,res)=>{
   res.cookie('Login',token,{
     httpOnly: true
   });
+}
+
+const multerStorage = multer.diskStorage({
+  destination : (req,file,cb)=>{
+    cb(null,'public/img')
+  },
+  filename: (req,file,cb)=>{
+    const extension = file.mimetype.split('/')[1];
+    cb(null,`user-${Date.now()}.${extension}`);
+  }
+});
+const multerFile = (req,file,cb)=>{
+  if(file.mimetype.startsWith('image')){
+    cb(null,true);
+  }else{
+    cb(null,false);
+  }
+}
+
+const upload = multer({
+  storage:multerStorage,
+});
+exports.uploadUserPhoto = upload.single('photo');
+
+exports.updateMe = async (req,res,next)=>{
+  try{
+
+  console.log(req.file);
+  console.log(req.body);
+  res.status(200).json({
+    status:'Success'
+  })
+}catch(err){
+  res.status(400).json({
+    status:'Failed',
+    err: err.message
+  })
+}
 }
 
 exports.getAll = async(req,res,next)=>{
@@ -125,6 +164,7 @@ exports.registration = async (req,res,next)=>{
     console.log(newuser);
     createSendToken(newuser._id,res);
     const token = signin(newuser._id);
+    
     res.status(200).json({
       'status':'Success',
       token,
@@ -166,6 +206,7 @@ exports.forgotPassword = async (req,res,next)=>{
      });
      res.status(200).json({
       status:'Success',
+      resetToken,
       message:'Token sent Successfully'
      })
   }catch(err){
@@ -193,7 +234,6 @@ exports.resetPassword = async (req,res,next)=>{
     createSendToken(user,res);
     res.status(200).json({
       status:'Success',
-      token,
       data:{
         user
       }
@@ -204,6 +244,4 @@ exports.resetPassword = async (req,res,next)=>{
       err:err.message
     })
   }
- 
-
 }

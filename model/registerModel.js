@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require('validator');
+const bcrypt = require("bcryptjs");
 
 const registerSchema =new mongoose.Schema({
   email:{
@@ -37,6 +38,13 @@ const registerSchema =new mongoose.Schema({
     required:[true,'Mention your atleast one Skill!']
   }
   
+});
+
+registerSchema.pre('save',async function(next){
+  if(!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password,10);
+  this.confirmPassword = undefined;
+  next();
 });
 
 const Register = mongoose.model('Register',registerSchema);

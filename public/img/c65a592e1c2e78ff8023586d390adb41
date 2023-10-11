@@ -1,0 +1,26 @@
+{
+	"info": {
+		"_postman_id": "837a5a84-7f1b-404d-85fd-c425b92097bd",
+		"name": "Natours",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27140962"
+	},
+	"item": [
+		{
+			"name": "Tours",
+			"item": []
+		},
+		{
+			"name": "Reviews",
+			"item": []
+		},
+		{
+			"name": "Tours/revies",
+			"item": []
+		},
+		{
+			"name": "User",
+			"item": []
+		}
+	]
+}

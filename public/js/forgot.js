@@ -10,7 +10,13 @@ const forgot = async (email)=>{
     });
     
     // console.log(res.data.statusText==='OK');
-    // console.log(res);
+    console.log(res);
+    if(res.data.status=='Success'){
+      alert("Check your Mailtrap to Reset the Password!");
+      window.setTimeout(()=>{
+        location.assign('/')
+      },1500)
+    }
     
 
   }catch(err){

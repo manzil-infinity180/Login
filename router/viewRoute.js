@@ -7,5 +7,7 @@ router.get('/signup',viewController.createAccount);
 router.get('/forgotPassword',viewController.forgotPassword);
 router.get('/updateMyPassword',viewController.updateMyPassword);
 router.get('/registration',viewController.registration);
+router.get('/reset-password/:resetToken',viewController.resetPasswod);
+router.get('/updateMe',viewController.updateMe);
 module.exports=router;
 
