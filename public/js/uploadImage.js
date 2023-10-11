@@ -5,14 +5,13 @@ const uploadImage = async (email,password ) =>{
   try{
     const res = await axios({
     method:'POST',
-    url:'http://localhost:8080/api/v1/user/login',
+    url:'http://localhost:8080/api/v1/user/updateMe',
     data:{
       email,
-      password
     }
   });
   if(res.data.status==='Success'){
-    alert("Logged In Successfully");
+    alert("Looking to perform Successfully");
     window.setTimeout(()=>{
       location.assign('/');
     },2000);
