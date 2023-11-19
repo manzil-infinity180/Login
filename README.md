@@ -17,6 +17,7 @@
 - PostManAPI
 - Mailtrap
 - Nodemailer
+- Multer npm package 
   
   
 
