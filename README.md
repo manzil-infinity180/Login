@@ -188,6 +188,49 @@ Transporter to setup Nodemailer
 - Replace the credential in config.env file with your own credentials 
 
 
+```
+Here's a breakdown of the packages and technologies you used, based on your dependencies:
+
+- axios (^1.5.1): Promise-based HTTP client for making requests.
+
+- bcryptjs (^2.4.3): Library for hashing passwords.
+
+- body-parser (^1.20.2): Node.js body parsing middleware, used to parse incoming request bodies.
+
+- cookie-parser (^1.4.6): Middleware for parsing cookies in Express.
+
+- crypto (^1.0.1): Node.js core module for cryptographic functionality.
+
+- cryptojs (^2.5.3): Library for cryptographic functions in JavaScript.
+
+- dotenv (^16.3.1): Module for loading environment variables from a .env file into process.env.
+
+- express (^4.18.2): Web application framework for Node.js.
+
+- jade (^1.11.0): Template engine for Node.js (now known as Pug).
+
+- jsonwebtoken (^9.0.2): Implementation of JSON Web Tokens (JWT) for Node.js.
+
+- mongoose (^7.5.3): MongoDB object modeling for Node.js.
+
+- multer (^1.4.5-lts.1): Middleware for handling multipart/form-data, used for file uploads.
+
+- nodemailer (^6.9.5): Module for sending emails with Node.js.
+
+- nodemon (^3.0.1): Utility that monitors for changes in your source code and automatically restarts your server.
+
+- path (^0.12.7): Node.js core module for working with file paths.
+
+- pug (^3.0.2): View engine for Node.js (formerly known as Jade).
+
+- sass (^1.68.0): Syntactically Awesome Stylesheets, a popular CSS preprocessor.
+
+- validator (^13.11.0): Library for string validation and sanitation.
+
+
+
+```
+
 <img width="1623" alt="Screenshot 2023-10-02 at 11 21 13 AM" src="https://github.com/manzil-infinity180/Login/assets/119070053/003ed33b-7cb7-4856-a3c9-f524914eb1b1">
 
 
