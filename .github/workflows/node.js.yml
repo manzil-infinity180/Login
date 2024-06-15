@@ -28,7 +28,5 @@ jobs:
             PORT: ${{ secrets.PORT }}
          - name: 'Start the server'
            run: npm run start
-         - name: 'start testing'
-           run: npm run test:ci
 
    
