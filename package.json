@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "eslint": "eslint ."
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix"
   },
   "author": "rahul",
   "license": "ISC",

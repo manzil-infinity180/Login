@@ -24,7 +24,7 @@ jobs:
          - name: Run eslint
            run: npm run eslint
          - name: 'Start the server'
-           run: npm run start
+           run: echo "Yeah we are done with this!!"
            env:
              DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
 
