@@ -3,7 +3,7 @@ const path = require("path");
 const app= express();
 const cookieParser = require("cookie-parser");
 const userRoute = require('./router/userRoute');
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const viewRoute = require("./router/viewRoute");
 app.use(express.json());
 app.set('view engine','pug');

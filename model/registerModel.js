@@ -20,7 +20,7 @@ const registerSchema =new mongoose.Schema({
     required:[true,'Without password you can not signup/login'],
     validate:{
       validator:function(el){
-        return (el==this.password);
+        return (el===this.password);
       },
       message:"Confirm Password must be same as Password"
     }
@@ -41,7 +41,7 @@ const registerSchema =new mongoose.Schema({
 });
 
 registerSchema.pre('save',async function(next){
-  if(!this.isModified('password')) return next();
+  if(!this.isModified('password')) {return next();}
   this.password = await bcrypt.hash(this.password,10);
   this.confirmPassword = undefined;
   next();

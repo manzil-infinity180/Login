@@ -21,7 +21,7 @@ const userSchema =new mongoose.Schema({
     required:[true,'Without password you can not signup/login'],
     validate:{
       validator:function(el){
-        return (el==this.password);
+        return (el===this.password);
       },
       message:"Confirm Password must be same as Password"
     }
@@ -31,7 +31,7 @@ const userSchema =new mongoose.Schema({
 });
 
 userSchema.pre('save',async function(next){
-  if(!this.isModified('password')) return next();
+  if(!this.isModified('password')) {return next();}
   this.password = await bcrypt.hash(this.password,10);
   this.confirmPassword = undefined;
   next();
@@ -44,7 +44,7 @@ userSchema.methods.correctPassword = async function(plainPassword , hashedPasswo
 userSchema.methods.createPasswordResetToken = function(){
   const resetToken = crypto.randomBytes(32).toString('hex');
   this.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
-  console.log("resetToken - resetPasswordToken "+resetToken,this.resetPasswordToken);
+  console.log(`resetToken - resetPasswordToken ${resetToken}`,this.resetPasswordToken);
   return resetToken;  
 }
 

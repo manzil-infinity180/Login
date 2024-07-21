@@ -1,11 +1,11 @@
 // const mongoose = require("mongoose");
-const { reset } = require("nodemon");
+// const { reset } = require("nodemon");
 const multer = require("multer");
 const User = require("./../model/userModel");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../utils/email");
 const Register = require("./../model/registerModel");
-const crypto = require ("crypto");
+// const crypto = require ("crypto");
 const signin = (id)=>{
   return jwt.sign({id},process.env.JWT_SECRET,{
     expiresIn: process.env.JWT_EXPIRE
@@ -32,20 +32,20 @@ const multerStorage = multer.diskStorage({
     cb(null,`user-${Date.now()}.${extension}`);
   }
 });
-const multerFile = (req,file,cb)=>{
-  if(file.mimetype.startsWith('image')){
-    cb(null,true);
-  }else{
-    cb(null,false);
-  }
-}
+// const multerFile = (req,file,cb)=>{
+//   if(file.mimetype.startsWith('image')){
+//     cb(null,true);
+//   }else{
+//     cb(null,false);
+//   }
+// }
 
 const upload = multer({
   storage:multerStorage,
 });
 exports.uploadUserPhoto = upload.single('photo');
 
-exports.updateMe = async (req,res,next)=>{
+exports.updateMe = async (req,res)=>{
   try{
 
   console.log(req.file);
@@ -61,7 +61,7 @@ exports.updateMe = async (req,res,next)=>{
 }
 }
 
-exports.getAll = async(req,res,next)=>{
+exports.getAll = async(req,res)=>{
   try{
     const user = await User.find();
     res.status(200).json({
@@ -77,7 +77,7 @@ exports.getAll = async(req,res,next)=>{
     });
   }
 }
-exports.signup = async(req,res,next)=>{
+exports.signup = async(req,res)=>{
   try{
     console.log(req.body);
     // I do not know why the validator is not working 
@@ -88,7 +88,7 @@ exports.signup = async(req,res,next)=>{
       password:req.body.password,
       confirmPassword:req.body.confirmPassword
     });
-    console.log("👷‍♀️"+newuser);
+    console.log(`👷‍♀️${newuser}`);
     // const user = await User.create(req.body);
 
     createSendToken(newuser._id,res);
@@ -107,10 +107,10 @@ exports.signup = async(req,res,next)=>{
     });
   }
 };
-exports.login = async(req,res,next)=>{
+exports.login = async(req,res)=>{
   try{
     const {email,password}=req.body;
-    console.log("🛫"+email,password);
+    console.log(`🛫${email}`,password);
     if(!email || !password){
       throw new Error('Email & Password is Required Field');
     }
@@ -150,7 +150,7 @@ exports.login = async(req,res,next)=>{
   }
 }
 // Register New User - Full detail 
-exports.registration = async (req,res,next)=>{
+exports.registration = async (req,res)=>{
   try{
     const newuser = await Register.create({
       email:req.body.email,
@@ -183,7 +183,7 @@ exports.registration = async (req,res,next)=>{
 
 }
 
-exports.forgotPassword = async (req,res,next)=>{
+exports.forgotPassword = async (req,res)=>{
   const user = await User.findOne({email :req.body.email});
   console.log(req.body.email);
   console.log(user);
@@ -192,7 +192,7 @@ exports.forgotPassword = async (req,res,next)=>{
      }
      const resetToken = user.createPasswordResetToken();
      await user.save({validateBeforeSave : false});
-     console.log("Reset Token : "+resetToken);
+     console.log(`Reset Token : ${resetToken}`);
 
      const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/user/resetPassword/${resetToken}`;
      const message =`Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetUrl}.\nIf you didn't forget your password, please ignore this email!`
@@ -218,15 +218,15 @@ exports.forgotPassword = async (req,res,next)=>{
     })
   }
 }
-exports.resetPassword = async (req,res,next)=>{
+exports.resetPassword = async (req,res)=>{
   try{
     console.log(req.params.token);
-    const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
+    // const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
     // console.log("hashed Token : "+ hashedToken);
     // const user = await User.findOne({resetPasswordToken: hashedToken});
     const user = await User.findOne({email : req.body.email});
     console.log(user);
-    if(!user) throw new Error("Token is invalid or expired !!!");
+    if(!user) {throw new Error("Token is invalid or expired !!!");}
     user.password = req.body.password;
     user.confirmPassword = req.body.confirmPassword;
     user.resetPasswordToken = undefined;

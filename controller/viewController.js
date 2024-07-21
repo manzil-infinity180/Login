@@ -1,5 +1,3 @@
-const User = require("../model/userModel");
-
 exports.getOverView = (req,res)=>{
   res.status(200).render('base',{
     title: 'Overview'
