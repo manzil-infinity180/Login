@@ -21,6 +21,8 @@ jobs:
              node-version: '20.x'
          - name: Install dependencies
            run: npm install
+         - name: Run eslint
+           run: npm run eslint
          - name: 'Start the server'
            run: npm run start
            env:
