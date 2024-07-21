@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "login and signup page",
   "main": "app.js",
-  "engines":{
+  "engines": {
     "node": "14.x"
   },
   "scripts": {
@@ -31,5 +31,9 @@
     "pug": "^3.0.2",
     "sass": "^1.68.0",
     "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin-js": "^2.3.0",
+    "eslint": "^9.7.0"
   }
 }
